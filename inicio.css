@@ -1,0 +1,195 @@
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #a8a8a8;
+            --panel: #b0b0b0;
+            --cyan: #00d4c8;
+            --white: #ffffff;
+            --black: #111111;
+            --label: #00d4c8;
+            --input-bg: #ffffff;
+            --radius: 6px;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--bg);
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            align-items: stretch;
+        }
+
+        /* Left panel */
+        .container {
+            width: 100%;
+            max-width: 520px;
+            padding: 52px 56px 48px 56px;
+            background-color: var(--panel);
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        h1.brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: -1px;
+            margin-bottom: 36px;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: black;
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+            margin-top: 22px;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: var(--black);
+            font-weight: 400;
+            padding: 10px 14px;
+            background: var(--input-bg);
+            border-radius: var(--radius);
+            border: none;
+            display: block;
+            width: 100%;
+        }
+
+        .saldo-block {
+            margin: 28px 0 10px 0;
+        }
+
+        .saldo-label {
+            font-size: 0.75rem;
+            color: black;
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+
+        .saldo-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--black);
+            letter-spacing: -0.5px;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(0,0,0,0.12);
+            margin: 22px 0;
+        }
+
+        .input-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            color: black;
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--input-bg);
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--black);
+            outline: none;
+            transition: box-shadow 0.2s;
+        }
+
+        input[type="number"]:focus {
+            box-shadow: 0 0 0 2px var(--cyan);
+        }
+
+        button.action-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--cyan);
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: lowercase;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            margin-top: 6px;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+
+        button.action-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+        button.action-btn:active { transform: translateY(0); }
+
+        .msg {
+            font-size: 0.78rem;
+            color: var(--black);
+            min-height: 18px;
+            margin-top: 4px;
+            opacity: 0.7;
+        }
+
+        .historico-box {
+            background: var(--input-bg);
+            border-radius: var(--radius);
+            padding: 12px 14px;
+            font-size: 0.85rem;
+            color: var(--black);
+            min-height: 60px;
+            max-height: 120px;
+            overflow-y: auto;
+            line-height: 1.7;
+        }
+
+        .footer-row {
+            margin-top: 28px;
+            display: flex;
+            justify-content: center;
+        }
+
+        button.sair-btn {
+            background: none;
+            border: none;
+            color: var(--cyan);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            cursor: pointer;
+            letter-spacing: 0.03em;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: opacity 0.2s;
+        }
+
+        button.sair-btn:hover { opacity: 0.7; }
+
+        /* Right decorative panel */
+        .deco {
+            flex: 1;
+            background-color: #b8b8b8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .deco svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }

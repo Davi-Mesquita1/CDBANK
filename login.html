@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Garante que o site seja responsivo em dispositivos móveis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDBANK</title>
+
+  <!--conecta o index ao css-->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Importa as fontes do Google Fonts:
+       - DM Sans (pesos 300, 400, 500) → usada nos textos gerais
+       - DM Serif Display → usada no logotipo CDBANK -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+<body id="login">
+
+  <!-- ── PAINEL ESQUERDO ─────────────────────────────────────── -->
+  <div class="left">
+
+    <!-- Saudação no topo da página -->
+    <p class="welcome">bem vindo ao</p>
+
+    <!-- Área central: formulário de login -->
+    <div class="form-area">
+
+      <!-- Campo: nome completo -->
+      <div class="field-group">
+        <!-- "for" conecta o label ao input pelo id, melhorando acessibilidade -->
+        <label class="field-label" for="email">Seu email</label>
+        <!-- autocomplete="name" sugere o nome salvo no navegador -->
+        <input class="field-input" id="email" type="text" autocomplete="name">
+      </div>
+
+      <!-- Campo: senha -->
+      <div class="field-group">
+        <label class="field-label" for="senha">sua senha</label>
+        <!-- type="senha" oculta os caracteres digitados -->
+        <input class="field-input" id="senha" type="password"a autocomplete="current-password">
+
+        <p id="msg"></p>
+      </div>
+
+      <!-- Botão que chama a função de validação/login -->
+      <button class="login-btn" onclick="entrar()">entrar</button>
+
+      <!-- Link para a tela de cadastro -->
+      <p class="register-row">ainda não tem uma conta? <a href="index.html">cadastrar-se</a></p>
+
+    </div>
+
+    <!-- Logotipo no rodapé do painel -->
+    <div class="brand">CDBANK</div>
+
+  </div>
+
+  <!-- ── PAINEL DIREITO: ondas decorativas ──────────────────────
+       O SVG começa vazio; as linhas onduladas são geradas
+       dinamicamente pelo JavaScript abaixo. -->
+  <div class="right">
+    <svg
+      class="waves-svg"
+      viewBox="0 0 400 800"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    ></svg>
+  </div>
+  <!--conecta o index ao javascript-->
+  <script src="config.js"></script>
+  <script src="login.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

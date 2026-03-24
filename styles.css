@@ -1,0 +1,217 @@
+ /* ── Reset global ──────────────────────────────────────────────
+       Remove margens, paddings e garante que padding/border
+       sejam incluídos nas dimensões dos elementos (box-sizing). */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Variáveis de design (tokens) ──────────────────────────────
+       Centraliza as cores do projeto para fácil manutenção.
+       Basta alterar aqui para mudar o visual em todo o site. */
+    :root {
+      --gray:         #b0b0b0; /* cinza auxiliar */
+      --bg:           #a8a8a8; /* cor de fundo principal */
+      --panel-bg:     #b8b8b8; /* fundo do painel secundário */
+      --wave-color:   #c8c8c8; /* cor das linhas onduladas */
+      --text-dark:    #1a1a1a; /* texto escuro (títulos, labels) */
+      --text-mid:     #333;    /* texto médio (textos de apoio) */
+      --cyan:         #00d4c8; /* cor de destaque principal (ciano) */
+      --cyan-hover:   #00bfb3; /* ciano mais escuro para hover */
+      --white:        #fff;
+      --input-bg:     #fff;    /* fundo dos campos de input */
+      --input-border: rgba(0,0,0,0.08); /* borda sutil dos inputs */
+    }
+
+    /* ── Layout base do body ───────────────────────────────────────
+       Flexbox em linha: painel esquerdo (formulário) + painel direito (ondas).
+       min-height: 100vh → ocupa toda a altura da janela. */
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;  /* painéis crescem para a mesma altura */
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      overflow: hidden;      /* evita scroll indesejado */
+    }
+
+    .index{
+      zoom: 80%;
+    }
+    
+    .msg{
+      visibility: hidden;
+    }
+    /* ════════════════════════════════════════════════════════════
+       PAINEL ESQUERDO — contém o formulário de login
+    ════════════════════════════════════════════════════════════ */
+    .left {
+      flex: 0 0 62%;           /* ocupa 62% da largura total */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* distribui: topo, meio, rodapé */
+      padding: 52px 64px 48px;
+      background: var(--bg);
+      position: relative;
+      z-index: 2;              /* fica acima do painel de ondas */
+    }
+
+    /* Texto "bem vindo ao" no topo */
+    .welcome {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--text-dark);
+      letter-spacing: 0.01em;
+      opacity: 0;
+      /* Animação de entrada: aparece subindo levemente com 0.1s de delay */
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    /* Área central que envolve os campos do formulário */
+    .form-area {
+      flex: 1;                 /* ocupa o espaço restante verticalmente */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* centraliza verticalmente no espaço */
+      max-width: 480px;
+      gap: 0;
+      opacity: 0;
+      /* Animação com 0.3s de delay — aparece depois do "bem vindo ao" */
+      animation: fadeUp 0.6s ease forwards 0.3s;
+    }
+
+    /* Agrupa cada par label + input */
+    .field-group {
+      margin-bottom: 36px;
+    }
+
+    /* Estilo dos labels dos campos (ex: "seu nome completo") */
+    .field-label {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--cyan);      /* ciano, seguindo o design original */
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Estilo dos campos de texto/senha */
+    .field-input {
+      width: 100%;
+      height: 48px;
+      background: var(--input-bg);
+      border: none;
+      border-radius: 4px;
+      padding: 0 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--text-dark);
+      outline: none;           /* remove o outline padrão do browser */
+      transition: box-shadow 0.2s ease; /* transição suave ao focar */
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); /* sombra leve em repouso */
+    }
+
+    /* Destaque ciano ao focar no campo (substitui o outline padrão) */
+    .field-input:focus {
+      box-shadow: 0 0 0 2px var(--cyan), 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    /* Esconde o placeholder — os labels já cumprem esse papel */
+    .field-input::placeholder { color: transparent; }
+
+    /* Botão principal de login */
+    .login-btn {
+      display: block;
+      width: 100%;
+      height: 48px;
+      background: var(--cyan);
+      border: none;
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      /* Transição suave para hover (cor) e clique (escala) */
+      transition: background 0.2s ease, transform 0.1s ease;
+      margin-top: 8px;
+    }
+
+    /* Estado hover: escurece levemente o ciano */
+    .login-btn:hover { background: var(--cyan-hover); }
+
+    /* Estado active (clique): leve "afundamento" visual */
+    .login-btn:active { transform: scale(0.99); }
+
+    /* Linha "ainda não tem uma conta? cadastrar-se" */
+    .register-row {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      opacity: 0;
+      /* Aparece por último, com 0.5s de delay */
+      animation: fadeUp 0.6s ease forwards 0.5s;
+    }
+
+    /* Link "cadastrar-se" em ciano */
+    .register-row a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 4px;
+      transition: opacity 0.2s;
+    }
+
+    /* Hover no link: reduz opacidade para dar feedback visual */
+    .register-row a:hover { opacity: 0.75; }
+
+    /* Logotipo "CDBANK" no rodapé do painel esquerdo */
+    .brand {
+      font-family: 'DM Serif Display', serif; /* fonte serifada para peso visual */
+      font-size: 5rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      opacity: 0;
+      /* Última animação da sequência de entrada */
+      animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       PAINEL DIREITO — decorativo com linhas onduladas (SVG)
+    ════════════════════════════════════════════════════════════ */
+    .right {
+      flex: 0 0 38%;           /* ocupa os 38% restantes */
+      background: #b4b4b4;     /* cinza ligeiramente diferente para separar visualmente */
+      position: relative;
+      overflow: hidden;        /* garante que o SVG não vaze para fora */
+    }
+
+    /* SVG que preenche todo o painel direito */
+    .waves-svg {
+      position: absolute;
+      inset: 0;                /* equivale a top/right/bottom/left: 0 */
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       ANIMAÇÃO DE ENTRADA — fadeUp
+       Os elementos começam invisíveis (opacity: 0) e deslocados
+       18px para baixo, depois sobem até a posição normal.
+       "forwards" mantém o estado final após a animação terminar.
+    ════════════════════════════════════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsividade para telas menores que 700px ───────────────
+       Em mobile, empilha os painéis verticalmente:
+       formulário em cima, ondas embaixo. */
+    @media (max-width: 700px) {
+      body { flex-direction: column; }
+      .left { flex: 1; padding: 40px 32px 36px; }
+      .right { flex: 0 0 160px; } /* painel de ondas vira uma faixa horizontal */
+      .brand { font-size: 3.5rem; }
+    }

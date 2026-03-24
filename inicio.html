@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Conta - Banco S</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="inicio.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="brand">CDBANK</h1>
+
+        <div class="section-title">Nome</div>
+        <span class="info-value" id="nome">...</span>
+
+        <div class="section-title">E-mail</div>
+        <span class="info-value" id="email">...</span>
+
+        <div class="saldo-block">
+            <div class="saldo-label">Saldo disponível</div>
+            <div class="saldo-value">R$ <span id="saldo">0,00</span></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="input-group">
+            <label for="valorDep">Valor para depositar</label>
+            <input type="number" id="valorDep" step="0.01" placeholder="0,00">
+        </div>
+        <button class="action-btn" onclick="depositar()">Depositar</button>
+        <p class="msg" id="msgDep"></p>
+
+        <div class="divider"></div>
+
+        <div class="input-group">
+            <label for="valorSaq">Valor para sacar</label>
+            <input type="number" id="valorSaq" step="0.01" placeholder="0,00">
+        </div>
+        <button class="action-btn" onclick="sacar()">Sacar</button>
+        <p class="msg" id="msgSaq"></p>
+
+        <div class="divider"></div>
+
+        <div class="input-group">
+            <label for="emailTransf">E-mail do destinatário</label>
+            <input type="email" id="emailTransf" placeholder="email@exemplo.com">
+        </div>
+        <div class="input-group">
+            <label for="valorTransf">Valor para transferir</label>
+            <input type="number" id="valorTransf" step="0.01" placeholder="0,00">
+        </div>
+        <button class="action-btn" onclick="transferir()">Transferir</button>
+        <p class="msg" id="msgTransf"></p>
+
+        <div class="divider"></div>
+
+        <div class="section-title">Histórico</div>
+        <div class="historico-box" id="historico">Carregando...</div>
+
+        <div class="footer-row">
+            <button class="action-btn" onclick="sair()">Sair da conta</button>
+        </div>
+    </div>
+
+    <div class="right">
+        <svg
+        class="waves-svg"
+        viewBox="0 0 400 800"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+        ></svg>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="conta.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

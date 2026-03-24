@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Garante que o site seja responsivo em dispositivos móveis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDBANK</title>
+
+  <!--conecta o index ao css-->
+  <link rel="stylesheet" href="index.css">
+  <!-- Importa as fontes do Google Fonts:
+       - DM Sans (pesos 300, 400, 500) → usada nos textos gerais
+       - DM Serif Display → usada no logotipo CDBANK -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+<body id="index">
+
+  <!-- ── PAINEL ESQUERDO ─────────────────────────────────────── -->
+  <div class="left">
+
+    <div class="brand">CDBANK</div>
+        <!-- Área central: formulário de login -->
+        <div class="form-area">
+
+        <!-- Campo: nome completo -->
+        <div class="field-group">
+            <!-- "for" conecta o label ao input pelo id, melhorando acessibilidade -->
+            <label class="field-label" for="nome">Seu nome completo</label>
+            <!-- autocomplete="name" sugere o nome salvo no navegador -->
+            <input class="field-input" name="nome" id="nome" type="text" autocomplete="name">
+        </div>
+
+        <div class="field-group">
+            <label class="field-label" for="cpf">Seu cpf</label>
+            <input type="text" name="cpf" class="field-input" id="cpf">
+
+        </div>
+
+        <div class="field-group">
+            <label class="field-label" for="email">Seu email</label>
+            <input type="text" name="email" class="field-input" id="email">
+
+        </div>
+        <!-- Campo: senha -->
+        <div class="field-group">
+            <label class="field-label" for="senha">Sua senha</label>
+            <!-- type="password" oculta os caracteres digitados -->
+            <input class="field-input" name="senha" id="senha" type="password" autocomplete="current-password">
+        </div>
+
+                <!-- Campo: repetir senha -->
+        <div class="field-group">
+            <label class="field-label" for="confirmesenha">Repita sua senha</label>
+            <!-- type="password" oculta os caracteres digitados -->
+            <input class="field-input" name="confirmesenha" id="confirmesenha" type="password" autocomplete="current-password">
+        </div>
+        <p id="msg"></p>
+
+        <!-- Botão que chama a função de validação/login -->
+        <button type="submit" onclick="cadastrar()" class="login-btn">Entrar</button>
+      <!-- Link para a tela de cadastro -->
+      <p class="register-row">Ja possui uma conta? <a href="login.html">entrar</a></p>
+
+    </div>
+    
+
+  </div>
+
+  <!-- ── PAINEL DIREITO: ondas decorativas ──────────────────────
+       O SVG começa vazio; as linhas onduladas são geradas
+       dinamicamente pelo JavaScript abaixo. -->
+  <div class="right">
+    <svg
+      class="waves-svg"
+      viewBox="0 0 400 800"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    ></svg>
+  </div>
+  <!--conecta o index ao javascript-->
+  <script src="config.js"></script>
+  <script src="cadastro.js"></script>
+  <script src="script.js"></script>    
+
+</body>
+</html>
