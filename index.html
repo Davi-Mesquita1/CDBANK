@@ -55,7 +55,12 @@
             <input class="field-input" name="confirmesenha" id="confirmesenha" type="password" autocomplete="current-password">
         </div>
         <p id="msg"></p>
-
+        <div id="saldlimit">
+          <label class="field-label" for="valorDep">Gostaria de fazer um deposito inicial?</label>
+          <input type="number" id="valorDep" step="0.01" placeholder="0,00">
+          <label class="field-label" for="valorLim">Gostaria de adicionar ao seu limite?</label>
+          <input type="number" id="valorLim" step="0.01" placeholder="0,00">
+        </div>
         <!-- Botão que chama a função de validação/login -->
         <button type="submit" onclick="cadastrar()" class="login-btn">Entrar</button>
       <!-- Link para a tela de cadastro -->

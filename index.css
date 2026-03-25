@@ -30,7 +30,7 @@
       background: var(--bg);
       font-family: 'DM Sans', sans-serif;
       overflow: hidden;      /* evita scroll indesejado */
-      zoom: 80%;
+      zoom: 70%;
     }
     .msg{
       visibility: hidden;

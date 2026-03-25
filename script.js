@@ -50,3 +50,7 @@
 
       svg.appendChild(path); // adiciona a linha ao SVG
     }
+
+    function limite(){
+      document.getElementById('saldlimit').style.display
+    }

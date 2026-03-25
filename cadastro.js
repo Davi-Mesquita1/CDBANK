@@ -1,4 +1,6 @@
 async function cadastrar() {
+    let limite = document.getElementById('valorLim').value
+    let saldo = document.getElementById('valorDep').value;
     let email = document.getElementById('email').value.trim();
     let senha = document.getElementById('senha').value;
     let nome = document.getElementById('nome').value.trim();
@@ -11,12 +13,20 @@ async function cadastrar() {
         return;
     }
 
+    if (saldo === null ){
+        saldo = 0;
+    }
+
+    if (limite === null){
+        limite = 0
+    }
+
     try {
         const contas = await supabaseQuery('contas', 'GET');
 
         for (let i = 0; i < contas.length; i++) {
             if (contas[i].cpf === cpf && contas[i].email === email){
-                alert('Email e cpf já existentes')
+                alert('Email e cpf já existentes');
                 return
             }
             else if (contas[i].email === email) {
@@ -38,6 +48,12 @@ async function cadastrar() {
             alert('CPF inválido: deve conter exatamente 11 dígitos.');
             return
         }
+
+        if (senha.length < 8){
+            alert('a senha deve conter no mínimo 9 caracteres')
+            return
+        }
+
         let confirmar = document.getElementById("confirmesenha").value;
 
 
@@ -45,12 +61,15 @@ async function cadastrar() {
         alert("As senhas não coincidem");
         return;
         }
+
+
         const resultado = await supabaseQuery('contas', 'POST', {
             email: email,
             senha: senha,
             nome: nome,
-            saldo: 0,
-            cpf: cpf
+            saldo: saldo,
+            cpf: cpf,
+            limite: limite
         });
 
         if (resultado.length > 0) {
